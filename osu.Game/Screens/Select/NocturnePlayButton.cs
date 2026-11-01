@@ -40,12 +40,12 @@ namespace osu.Game.Screens.Select
         {
             this.startAction = startAction;
 
-            Anchor = Anchor.BottomRight;
-            Origin = Anchor.BottomRight;
+            Anchor = Anchor.BottomCentre;
+            Origin = Anchor.BottomCentre;
             Size = new Vector2(270, 66);
 
-            // Sits just above the footer, to the left of the osu! logo.
-            Margin = new MarginPadding { Right = 300, Bottom = ScreenFooter.HEIGHT + 16 };
+            // Sits just above the footer, in the free space between the left panels and the song list.
+            Margin = new MarginPadding { Bottom = ScreenFooter.HEIGHT + 16 };
         }
 
         [BackgroundDependencyLoader]
@@ -60,14 +60,14 @@ namespace osu.Game.Screens.Select
                 {
                     Type = EdgeEffectType.Shadow,
                     Radius = 18,
-                    Colour = NocturneTheme.LAVENDER.Opacity(0.5f),
+                    Colour = NocturneTheme.PLAY_END.Opacity(0.5f),
                 },
                 Children = new Drawable[]
                 {
                     new Box
                     {
                         RelativeSizeAxes = Axes.Both,
-                        Colour = ColourInfo.GradientHorizontal(NocturneTheme.LAVENDER, NocturneTheme.PINK),
+                        Colour = ColourInfo.GradientHorizontal(NocturneTheme.PLAY_START, NocturneTheme.PLAY_END),
                     },
                     hover = new Box
                     {
@@ -83,7 +83,7 @@ namespace osu.Game.Screens.Select
                         X = 22,
                         Size = new Vector2(24),
                         Icon = FontAwesome.Solid.Play,
-                        Colour = NocturneTheme.BASE,
+                        Colour = NocturneTheme.TEXT_PRIMARY,
                     },
                     new FillFlowContainer
                     {
@@ -98,7 +98,7 @@ namespace osu.Game.Screens.Select
                             {
                                 Text = "PLAY",
                                 Font = OsuFont.GetFont(size: 26, weight: FontWeight.Bold),
-                                Colour = NocturneTheme.BASE,
+                                Colour = NocturneTheme.TEXT_PRIMARY,
                                 Shadow = false,
                             },
                             detailText = new TruncatingSpriteText
@@ -106,7 +106,7 @@ namespace osu.Game.Screens.Select
                                 Width = 190,
                                 ShowTooltip = false,
                                 Font = OsuFont.GetFont(size: 14, weight: FontWeight.SemiBold),
-                                Colour = NocturneTheme.BASE.Opacity(0.85f),
+                                Colour = NocturneTheme.TEXT_PRIMARY.Opacity(0.9f),
                                 Shadow = false,
                             },
                         },

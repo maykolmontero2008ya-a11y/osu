@@ -16,6 +16,8 @@ namespace osu.Game.Screens.Select
         public static readonly Color4 ACCENT_PURPLE = Color4Extensions.FromHex(@"A78BFA");
         public static readonly Color4 LAVENDER = Color4Extensions.FromHex(@"C084FC");
         public static readonly Color4 PINK = Color4Extensions.FromHex(@"F0ABFC");
+        public static readonly Color4 PLAY_START = Color4Extensions.FromHex(@"7C3AED");
+        public static readonly Color4 PLAY_END = Color4Extensions.FromHex(@"D946EF");
         public static readonly Color4 TEXT_PRIMARY = Color4Extensions.FromHex(@"F8F5FF");
         public static readonly Color4 TEXT_SECONDARY = Color4Extensions.FromHex(@"C4B5D5");
 
