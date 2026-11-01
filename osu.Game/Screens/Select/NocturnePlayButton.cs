@@ -56,6 +56,8 @@ namespace osu.Game.Screens.Select
                 RelativeSizeAxes = Axes.Both,
                 Masking = true,
                 CornerRadius = 18,
+                BorderThickness = 2.5f,
+                BorderColour = NocturneTheme.PINK,
                 EdgeEffect = new EdgeEffectParameters
                 {
                     Type = EdgeEffectType.Shadow,
@@ -64,6 +66,12 @@ namespace osu.Game.Screens.Select
                 },
                 Children = new Drawable[]
                 {
+                    // Opaque backing so the gradient stays saturated over bright artwork.
+                    new Box
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        Colour = NocturneTheme.BASE,
+                    },
                     new Box
                     {
                         RelativeSizeAxes = Axes.Both,

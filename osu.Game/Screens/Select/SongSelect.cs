@@ -202,7 +202,7 @@ namespace osu.Game.Screens.Select
                                 {
                                     RelativeSizeAxes = Axes.Both,
                                     Width = 0.6f,
-                                    Colour = ColourInfo.GradientHorizontal(NocturneTheme.BASE.Opacity(0.7f), NocturneTheme.BASE.Opacity(0f)),
+                                    Colour = ColourInfo.GradientHorizontal(NocturneTheme.BASE.Opacity(0.88f), NocturneTheme.BASE.Opacity(0f)),
                                 },
                                 mainGridContainer = new GridContainer // used for max width implementation
                                 {
@@ -864,7 +864,7 @@ namespace osu.Game.Screens.Select
             backgroundModeBeatmap.Beatmap = Beatmap.Value;
             backgroundModeBeatmap.IgnoreUserSettings.Value = true;
 
-            backgroundModeBeatmap.DimWhenUserSettingsIgnored.Value = 0.1f;
+            backgroundModeBeatmap.DimWhenUserSettingsIgnored.Value = 0.22f;
 
             // Required to undo results screen dimming the background.
             // Probably needs more thought because this needs to be in every `ApplyToBackground` currently to restore sane defaults.
