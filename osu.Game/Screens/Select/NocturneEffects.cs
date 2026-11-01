@@ -150,8 +150,8 @@ namespace osu.Game.Screens.Select
             double dt = Math.Abs(elapsed) / 1000;
 
             smoothedOffset = new Vector2(
-                Interpolation.Damp(smoothedOffset.X, target.X, 0.01, dt),
-                Interpolation.Damp(smoothedOffset.Y, target.Y, 0.01, dt));
+                (float)Interpolation.Damp(smoothedOffset.X, target.X, 0.01, dt),
+                (float)Interpolation.Damp(smoothedOffset.Y, target.Y, 0.01, dt));
 
             if (!parallaxApplied || (smoothedOffset - appliedOffset).LengthSquared > 0.25f)
             {
