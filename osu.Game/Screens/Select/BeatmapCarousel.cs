@@ -684,7 +684,11 @@ namespace osu.Game.Screens.Select
                     if (i.Model is GroupedBeatmapSet)
                         i.IsExpanded = expanded;
                     else
-                        i.IsVisible = canMakeVisible && expanded;
+                    {
+                        // NOCTURNE: the per-difficulty list is replaced by the difficulty card row on the left,
+                        // so difficulty items are never shown under an expanded set.
+                        i.IsVisible = false;
+                    }
                 }
             }
         }
