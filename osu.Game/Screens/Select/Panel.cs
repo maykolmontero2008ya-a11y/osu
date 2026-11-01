@@ -346,7 +346,7 @@ namespace osu.Game.Screens.Select
             {
                 // Bright accent outline and a soft glow.
                 TopLevelContent.BorderThickness = 3f;
-                TopLevelContent.BorderColour = ColourInfo.GradientHorizontal(NocturneTheme.ACCENT_PURPLE, NocturneTheme.PINK);
+                TopLevelContent.BorderColour = NocturneTheme.LAVENDER;
 
                 TopLevelContent.EdgeEffect = new EdgeEffectParameters
                 {

@@ -236,7 +236,7 @@ namespace osu.Game.Screens.Select
                 if (selected)
                 {
                     body.BorderThickness = 2.5f;
-                    body.BorderColour = ColourInfo.GradientHorizontal(NocturneTheme.ACCENT_PURPLE, NocturneTheme.PINK);
+                    body.BorderColour = NocturneTheme.PINK;
                     body.EdgeEffect = new EdgeEffectParameters
                     {
                         Type = EdgeEffectType.Shadow,
