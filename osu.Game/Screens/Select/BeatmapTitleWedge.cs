@@ -33,8 +33,8 @@ namespace osu.Game.Screens.Select
     public partial class BeatmapTitleWedge : VisibilityContainer
     {
         private const float corner_radius = 10;
-        private const float title_size = 54;
-        private const float artist_size = 24;
+        private const float title_size = 44;
+        private const float artist_size = 22;
 
         [Resolved]
         private IBindable<WorkingBeatmap> working { get; set; } = null!;
