@@ -121,7 +121,7 @@ namespace osu.Game.Screens.Select
                     darkenLayer = new Box
                     {
                         Colour = NocturneTheme.BASE,
-                        Alpha = 0.5f,
+                        Alpha = 0.6f,
                         RelativeSizeAxes = Axes.Both,
                     },
                     iconContainer = new Container
@@ -345,13 +345,13 @@ namespace osu.Game.Screens.Select
             if (selectedOrExpanded)
             {
                 // Bright accent outline and a soft glow.
-                TopLevelContent.BorderThickness = 2.5f;
-                TopLevelContent.BorderColour = NocturneTheme.LAVENDER;
+                TopLevelContent.BorderThickness = 3f;
+                TopLevelContent.BorderColour = ColourInfo.GradientHorizontal(NocturneTheme.ACCENT_PURPLE, NocturneTheme.PINK);
 
                 TopLevelContent.EdgeEffect = new EdgeEffectParameters
                 {
                     Type = EdgeEffectType.Shadow,
-                    Radius = 14f,
+                    Radius = 22f,
                     Hollow = true,
                 };
             }
@@ -369,9 +369,9 @@ namespace osu.Game.Screens.Select
                 };
             }
 
-            TopLevelContent.FadeEdgeEffectTo(selectedOrExpanded ? NocturneTheme.LAVENDER.Opacity(0.55f) : Color4.Black.Opacity(0.3f), duration, Easing.OutQuint);
+            TopLevelContent.FadeEdgeEffectTo(selectedOrExpanded ? NocturneTheme.LAVENDER.Opacity(0.8f) : Color4.Black.Opacity(0.3f), duration, Easing.OutQuint);
 
-            darkenLayer.FadeTo(selectedOrExpanded ? 0.1f : 0.5f, duration, Easing.OutQuint);
+            darkenLayer.FadeTo(selectedOrExpanded ? 0f : 0.6f, duration, Easing.OutQuint);
 
             if (selectedOrExpanded)
                 selectionLayer.FadeIn(100, Easing.OutQuint);

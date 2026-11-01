@@ -119,6 +119,7 @@ namespace osu.Game.Screens.Select
         protected FilterControl FilterControl { get; private set; } = null!;
 
         private BeatmapTitleWedge titleWedge = null!;
+        private NocturneDifficultyRow difficultyRow = null!;
         private BeatmapDetailsArea detailsArea = null!;
         private FillFlowContainer wedgesContainer = null!;
         private Box rightGradientBackground = null!;
@@ -245,6 +246,7 @@ namespace osu.Game.Screens.Select
                                                             {
                                                                 TopPadding = TopPadding,
                                                             }),
+                                                            new ShearAligningWrapper(difficultyRow = new NocturneDifficultyRow(selectDifficulty)),
                                                             new InputBlockingContainer
                                                             {
                                                                 RelativeSizeAxes = Axes.X,
@@ -411,7 +413,7 @@ namespace osu.Game.Screens.Select
         {
             base.Update();
 
-            detailsArea.Height = wedgesContainer.ChildSize.Y - titleWedge.LayoutSize.Y - 4;
+            detailsArea.Height = wedgesContainer.ChildSize.Y - titleWedge.LayoutSize.Y - difficultyRow.Height - 4;
 
             float widescreenBonusWidth = Math.Max(0, DrawWidth / DrawHeight - 2f);
 
@@ -595,6 +597,12 @@ namespace osu.Game.Screens.Select
             // Debounce consideration is to avoid beatmap churn on key repeat selection.
             debounceQueueSelection(groupedBeatmap.Beatmap);
         }
+
+        /// <summary>
+        /// NOCTURNE: selects a specific difficulty of the currently selected set through the usual selection flow.
+        /// </summary>
+        private void selectDifficulty(BeatmapInfo beatmap)
+            => queueBeatmapSelection(new GroupedBeatmap(carousel.CurrentGroupedBeatmap?.Group, beatmap));
 
         private bool ensureGlobalBeatmapValid()
         {

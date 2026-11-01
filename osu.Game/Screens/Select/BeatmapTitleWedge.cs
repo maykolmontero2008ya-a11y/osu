@@ -33,6 +33,8 @@ namespace osu.Game.Screens.Select
     public partial class BeatmapTitleWedge : VisibilityContainer
     {
         private const float corner_radius = 10;
+        private const float title_size = 54;
+        private const float artist_size = 24;
 
         [Resolved]
         private IBindable<WorkingBeatmap> working { get; set; } = null!;
@@ -116,7 +118,7 @@ namespace osu.Game.Screens.Select
                         {
                             Shear = -OsuGame.SHEAR,
                             RelativeSizeAxes = Axes.X,
-                            Height = OsuFont.Style.Title.Size,
+                            Height = title_size + 6,
                             Margin = new MarginPadding { Bottom = -4f },
                             Child = titleLink = new OsuHoverContainer
                             {
@@ -132,7 +134,7 @@ namespace osu.Game.Screens.Select
                         {
                             Shear = -OsuGame.SHEAR,
                             RelativeSizeAxes = Axes.X,
-                            Height = OsuFont.Style.Heading2.Size,
+                            Height = artist_size + 4,
                             Margin = new MarginPadding { Left = 1f },
                             Child = artistLink = new OsuHoverContainer
                             {
@@ -228,7 +230,8 @@ namespace osu.Game.Screens.Select
             {
                 Text = titleText,
                 Shadow = true,
-                Font = OsuFont.Style.Title,
+                Font = OsuFont.GetFont(size: title_size, weight: FontWeight.Bold),
+                Colour = NocturneTheme.TEXT_PRIMARY,
             };
             titleLink.Action = () => songSelect?.AddToSearch(titleText.GetPreferred(localisation.CurrentParameters.Value.PreferOriginalScript));
             DisplayedTitle = titleText.ToString();
@@ -238,7 +241,8 @@ namespace osu.Game.Screens.Select
             {
                 Text = artistText,
                 Shadow = true,
-                Font = OsuFont.Style.Heading2,
+                Font = OsuFont.GetFont(size: artist_size, weight: FontWeight.Medium, italics: true),
+                Colour = NocturneTheme.TEXT_SECONDARY,
             };
             artistLink.Action = () => songSelect?.AddToSearch(artistText.GetPreferred(localisation.CurrentParameters.Value.PreferOriginalScript));
             DisplayedArtist = artistText.ToString();
