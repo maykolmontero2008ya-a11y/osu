@@ -202,7 +202,7 @@ namespace osu.Game.Screens.Select
                                 {
                                     RelativeSizeAxes = Axes.Both,
                                     Width = 0.6f,
-                                    Colour = ColourInfo.GradientHorizontal(Color4.Black.Opacity(0.3f), Color4.Black.Opacity(0f)),
+                                    Colour = ColourInfo.GradientHorizontal(NocturneTheme.BASE.Opacity(0.7f), NocturneTheme.BASE.Opacity(0f)),
                                 },
                                 mainGridContainer = new GridContainer // used for max width implementation
                                 {
@@ -318,6 +318,7 @@ namespace osu.Game.Screens.Select
                     Origin = Anchor.Centre,
                     RelativeSizeAxes = Axes.Both,
                 },
+                new NocturnePlayButton(() => SelectAndRun(Beatmap.Value.BeatmapInfo, OnStart)),
                 modSpeedHotkeyHandler = new ModSpeedHotkeyHandler()
             });
 
@@ -870,7 +871,7 @@ namespace osu.Game.Screens.Select
             backgroundModeBeatmap.FadeColour(Color4.White, 250);
 
             bool backgroundRevealActive = revealBackgroundDelegate?.State == ScheduledDelegate.RunState.Running || revealBackgroundDelegate?.State == ScheduledDelegate.RunState.Complete;
-            backgroundModeBeatmap.BlurAmount.Value = configBackgroundBlur.Value && !backgroundRevealActive ? 20 : 0f;
+            backgroundModeBeatmap.BlurAmount.Value = configBackgroundBlur.Value && !backgroundRevealActive ? 5 : 0f;
         });
 
         #endregion
