@@ -20,6 +20,7 @@ using osu.Game.Overlays;
 using osu.Game.Overlays.Mods;
 using osu.Game.Screens.Menu;
 using osuTK;
+using osu.Game.Screens.Select;
 
 namespace osu.Game.Screens.Footer
 {
@@ -90,7 +91,7 @@ namespace osu.Game.Screens.Footer
                 background = new Box
                 {
                     RelativeSizeAxes = Axes.Both,
-                    Colour = colourProvider.Background5
+                    Colour = NocturneTheme.BASE
                 },
                 new GridContainer
                 {
@@ -405,7 +406,7 @@ namespace osu.Game.Screens.Footer
         {
             colourProvider.ChangeColourScheme(hue);
 
-            background.FadeColour(colourProvider.Background5, 150, Easing.OutQuint);
+            background.FadeColour(NocturneTheme.BASE, 150, Easing.OutQuint);
 
             foreach (var button in leftButtonsFlow)
                 button.UpdateDisplay();

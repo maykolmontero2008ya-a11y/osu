@@ -12,6 +12,7 @@ using osu.Game.Graphics.UserInterface;
 using osu.Game.Localisation;
 using osuTK;
 using osuTK.Graphics;
+using osu.Game.Screens.Select;
 
 namespace osu.Game.Screens.Footer
 {
@@ -63,8 +64,8 @@ namespace osu.Game.Screens.Footer
                 }
             };
 
-            DarkerColour = Color4Extensions.FromHex("#DE31AE");
-            LighterColour = Color4Extensions.FromHex("#FF86DD");
+            DarkerColour = NocturneTheme.PLAY_START;
+            LighterColour = NocturneTheme.PLAY_END;
             TextColour = Color4.White;
         }
     }
