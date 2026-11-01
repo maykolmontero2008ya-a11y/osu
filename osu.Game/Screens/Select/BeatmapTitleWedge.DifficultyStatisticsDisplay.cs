@@ -204,14 +204,14 @@ namespace osu.Game.Screens.Select
                     {
                         Text = s.Label,
                         Font = OsuFont.Style.Caption2.With(weight: FontWeight.SemiBold),
-                        Colour = colourProvider.Content2,
+                        Colour = NocturneTheme.TEXT_SECONDARY,
                     },
                     Empty(),
                     new OsuSpriteText
                     {
                         Font = OsuFont.Style.Caption2.With(weight: FontWeight.SemiBold),
                         Text = s.Content ?? s.Value.ToLocalisableString("0.##"),
-                        Colour = colourProvider.Content1,
+                        Colour = NocturneTheme.TEXT_PRIMARY,
                     },
                 }).ToArray();
             }

@@ -131,6 +131,7 @@ namespace osu.Game.Screens.Select
                                                     Origin = Anchor.BottomLeft,
                                                     Text = " mapped by ",
                                                     Font = OsuFont.Style.Body,
+                                                    Colour = NocturneTheme.TEXT_SECONDARY,
                                                 },
                                                 mapperLink = new MapperLinkContainer
                                                 {
@@ -160,13 +161,15 @@ namespace osu.Game.Screens.Select
                                     AutoSizeAxes = Axes.Y,
                                     Masking = true,
                                     CornerRadius = 10 - border_weight,
+                                    BorderThickness = 1.5f,
+                                    BorderColour = NocturneTheme.ACCENT_PURPLE.Opacity(0.35f),
                                     Shear = OsuGame.SHEAR,
                                     Children = new Drawable[]
                                     {
                                         new Box
                                         {
                                             RelativeSizeAxes = Axes.Both,
-                                            Colour = colourProvider.Background5.Opacity(0.8f),
+                                            Colour = NocturneTheme.DEEP_VIOLET.Opacity(0.7f),
                                         },
                                         new GridContainer
                                         {

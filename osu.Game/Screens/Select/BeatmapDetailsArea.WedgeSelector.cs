@@ -48,7 +48,7 @@ namespace osu.Game.Screens.Select
                     Anchor = Anchor.BottomLeft,
                     Origin = Anchor.BottomLeft,
                     Height = 2,
-                    Colour = colourProvider.Highlight1,
+                    Colour = NocturneTheme.LAVENDER,
                 });
 
                 foreach (var type in Enum.GetValues<T>())
@@ -135,9 +135,9 @@ namespace osu.Game.Screens.Select
                 private void updateDisplay()
                 {
                     if (Active.Value || IsHovered)
-                        Text.FadeColour(colourProvider.Content1, 300, Easing.OutQuint);
+                        Text.FadeColour(NocturneTheme.TEXT_PRIMARY, 300, Easing.OutQuint);
                     else
-                        Text.FadeColour(colourProvider.Content2, 300, Easing.OutQuint);
+                        Text.FadeColour(NocturneTheme.TEXT_SECONDARY, 300, Easing.OutQuint);
 
                     Text.Font = Text.Font.With(weight: Active.Value ? FontWeight.SemiBold : FontWeight.Regular);
                 }
