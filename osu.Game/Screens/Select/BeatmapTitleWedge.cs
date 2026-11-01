@@ -168,6 +168,10 @@ namespace osu.Game.Screens.Select
                                 },
                             },
                         }),
+                        new ShearAligningWrapper(new NocturnePreviewBar
+                        {
+                            Shear = -OsuGame.SHEAR,
+                        }),
                         new ShearAligningWrapper(new Container
                         {
                             Shear = -OsuGame.SHEAR,
