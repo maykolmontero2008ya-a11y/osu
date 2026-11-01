@@ -176,13 +176,13 @@ namespace osu.Game.Screens.Select
                             Blending = BlendingParameters.Additive,
                             Alpha = 0,
                         },
-                        new OsuSpriteText
+                        new TruncatingSpriteText
                         {
                             Anchor = Anchor.TopLeft,
                             Origin = Anchor.TopLeft,
                             Position = new Vector2(10, 9),
                             Width = CARD_WIDTH - 20,
-                            Truncate = true,
+                            ShowTooltip = false,
                             Text = Beatmap.DifficultyName,
                             Font = OsuFont.GetFont(size: 15, weight: FontWeight.SemiBold),
                             Colour = NocturneTheme.TEXT_PRIMARY,
