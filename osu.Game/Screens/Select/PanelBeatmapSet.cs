@@ -101,14 +101,14 @@ namespace osu.Game.Screens.Select
                     Icon = FontAwesome.Solid.ChevronRight,
                     Size = new Vector2(8),
                     X = 1f,
-                    Colour = colourProvider.Background5,
+                    Colour = NocturneTheme.BASE,
                 },
             };
 
             Background = chevronBackground = new Box
             {
                 RelativeSizeAxes = Axes.Both,
-                Colour = Color4.White,
+                Colour = NocturneTheme.LAVENDER,
                 Alpha = 0f,
             };
 
@@ -127,10 +127,12 @@ namespace osu.Game.Screens.Select
                         titleText = new OsuSpriteText
                         {
                             Font = OsuFont.Style.Heading1.With(typeface: Typeface.TorusAlternate),
+                            Colour = NocturneTheme.TEXT_PRIMARY,
                         },
                         artistText = new OsuSpriteText
                         {
                             Font = OsuFont.Style.Body.With(weight: FontWeight.SemiBold),
+                            Colour = NocturneTheme.TEXT_SECONDARY,
                         },
                         new FillFlowContainer
                         {

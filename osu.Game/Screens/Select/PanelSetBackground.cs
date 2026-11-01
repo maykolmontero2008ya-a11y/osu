@@ -110,19 +110,19 @@ namespace osu.Game.Screens.Select
                         new Box
                         {
                             RelativeSizeAxes = Axes.Both,
-                            Colour = Color4.Black.Opacity(0.5f),
+                            Colour = NocturneTheme.BASE.Opacity(0.8f),
                             Width = 0.4f,
                         },
                         new Box
                         {
                             RelativeSizeAxes = Axes.Both,
-                            Colour = ColourInfo.GradientHorizontal(Color4.Black.Opacity(0.5f), Color4.Black.Opacity(0.3f)),
+                            Colour = ColourInfo.GradientHorizontal(NocturneTheme.BASE.Opacity(0.8f), NocturneTheme.BASE.Opacity(0.45f)),
                             Width = 0.2f,
                         },
                         new Box
                         {
                             RelativeSizeAxes = Axes.Both,
-                            Colour = ColourInfo.GradientHorizontal(Color4.Black.Opacity(0.3f), Color4.Black.Opacity(0.2f)),
+                            Colour = ColourInfo.GradientHorizontal(NocturneTheme.BASE.Opacity(0.45f), NocturneTheme.BASE.Opacity(0.2f)),
                             // Slightly more than 1.0 in total to account for shear.
                             Width = 0.45f,
                         },
