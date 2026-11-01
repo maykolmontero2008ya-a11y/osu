@@ -95,7 +95,7 @@ namespace osu.Game.Screens.Select
                 {
                     Depth = 1,
                     RelativeSizeAxes = Axes.Both,
-                    Colour = ColourInfo.GradientHorizontal(colourProvider.Background3, colourProvider.Background4),
+                    Colour = ColourInfo.GradientHorizontal(NocturneTheme.DEEP_VIOLET, NocturneTheme.BASE),
                 },
                 new FillFlowContainer
                 {

@@ -27,7 +27,7 @@ namespace osu.Game.Screens.Select
 {
     public abstract partial class Panel : PoolableDrawable, ICarouselPanel, IHasContextMenu
     {
-        public const float CORNER_RADIUS = 10;
+        public const float CORNER_RADIUS = 14;
 
         private const float active_x_offset = 25f;
 
@@ -40,6 +40,7 @@ namespace osu.Game.Screens.Select
 
         private Drawable activationFlash = null!;
         private Drawable hoverLayer = null!;
+        private Drawable darkenLayer = null!;
 
         private Drawable keyboardSelectionLayer = null!;
 
@@ -96,7 +97,7 @@ namespace osu.Game.Screens.Select
         private BeatmapCarousel? carousel { get; set; }
 
         [BackgroundDependencyLoader]
-        private void load(OverlayColourProvider colourProvider, OsuColour colours)
+        private void load(OverlayColourProvider colourProvider)
         {
             Anchor = Anchor.TopRight;
             Origin = Anchor.TopRight;
@@ -114,6 +115,13 @@ namespace osu.Game.Screens.Select
                 {
                     backgroundContainer = new Container
                     {
+                        RelativeSizeAxes = Axes.Both,
+                    },
+                    // NOCTURNE: unselected cards are dimmed with a deep violet-black layer.
+                    darkenLayer = new Box
+                    {
+                        Colour = NocturneTheme.BASE,
+                        Alpha = 0.5f,
                         RelativeSizeAxes = Axes.Both,
                     },
                     iconContainer = new Container
@@ -135,7 +143,7 @@ namespace osu.Game.Screens.Select
                     hoverLayer = new Box
                     {
                         Alpha = 0,
-                        Colour = colours.Blue.Opacity(0.1f),
+                        Colour = NocturneTheme.ACCENT_PURPLE.Opacity(0.14f),
                         Blending = BlendingParameters.Additive,
                         RelativeSizeAxes = Axes.Both,
                     },
@@ -151,7 +159,7 @@ namespace osu.Game.Screens.Select
                     keyboardSelectionLayer = new Box
                     {
                         Alpha = 0,
-                        Colour = ColourInfo.GradientHorizontal(colourProvider.Highlight1.Opacity(0.1f), colourProvider.Highlight1.Opacity(0.4f)),
+                        Colour = ColourInfo.GradientHorizontal(NocturneTheme.LAVENDER.Opacity(0.1f), NocturneTheme.LAVENDER.Opacity(0.4f)),
                         Blending = BlendingParameters.Additive,
                         RelativeSizeAxes = Axes.Both,
                     },
@@ -332,19 +340,26 @@ namespace osu.Game.Screens.Select
         {
             bool selectedOrExpanded = Expanded.Value || Selected.Value;
 
-            var edgeEffectColour = accentColour ?? Color4Extensions.FromHex(@"4EBFFF");
+            double duration = animated ? NocturneTheme.SELECT_DURATION : 0;
 
             if (selectedOrExpanded)
             {
+                // Bright accent outline and a soft glow.
+                TopLevelContent.BorderThickness = 2.5f;
+                TopLevelContent.BorderColour = NocturneTheme.LAVENDER;
+
                 TopLevelContent.EdgeEffect = new EdgeEffectParameters
                 {
                     Type = EdgeEffectType.Shadow,
-                    Radius = 2f,
+                    Radius = 14f,
                     Hollow = true,
                 };
             }
             else
             {
+                TopLevelContent.BorderThickness = 1f;
+                TopLevelContent.BorderColour = NocturneTheme.ACCENT_PURPLE.Opacity(0.18f);
+
                 TopLevelContent.EdgeEffect = new EdgeEffectParameters
                 {
                     Type = EdgeEffectType.Shadow,
@@ -354,7 +369,9 @@ namespace osu.Game.Screens.Select
                 };
             }
 
-            TopLevelContent.FadeEdgeEffectTo(selectedOrExpanded ? edgeEffectColour.Opacity(0.8f) : Color4.Black.Opacity(0.2f), animated ? DURATION : 0, Easing.OutQuint);
+            TopLevelContent.FadeEdgeEffectTo(selectedOrExpanded ? NocturneTheme.LAVENDER.Opacity(0.55f) : Color4.Black.Opacity(0.3f), duration, Easing.OutQuint);
+
+            darkenLayer.FadeTo(selectedOrExpanded ? 0.1f : 0.5f, duration, Easing.OutQuint);
 
             if (selectedOrExpanded)
                 selectionLayer.FadeIn(100, Easing.OutQuint);
@@ -382,7 +399,7 @@ namespace osu.Game.Screens.Select
 
         protected override bool OnHover(HoverEvent e)
         {
-            hoverLayer.FadeIn(100, Easing.OutQuint);
+            hoverLayer.FadeIn(NocturneTheme.HOVER_DURATION, Easing.OutQuint);
             return true;
         }
 
