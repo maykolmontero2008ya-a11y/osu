@@ -112,7 +112,7 @@ namespace osu.Game.Screens.Select
         // Purple makes the most sense to match the "gameplay" flow, but it's a bit too strong for the current design.
         // TODO: Colour scheme choice should probably be customisable by the user.
         [Cached]
-        private readonly OverlayColourProvider colourProvider = new OverlayColourProvider(OverlayColourScheme.Blue);
+        private readonly OverlayColourProvider colourProvider = new OverlayColourProvider(OverlayColourScheme.Purple);
 
         private BeatmapCarousel carousel = null!;
 
@@ -184,6 +184,7 @@ namespace osu.Game.Screens.Select
             {
                 new ScrollAdjustsVolume(),
                 onlineLookupSource,
+                new NocturneEffects(applyBackgroundParallax, () => this.IsCurrentScreen()),
                 mainContent = new Container
                 {
                     Anchor = Anchor.Centre,
@@ -770,8 +771,24 @@ namespace osu.Game.Screens.Select
             fetchOnlineInfo(force: ReferenceEquals(e.OldValue, e.NewValue));
         }
 
+        private void applyBackgroundParallax(Vector2 offset, bool active)
+        {
+            ApplyToBackground(b =>
+            {
+                b.Scale = new Vector2(active ? NocturneEffects.PARALLAX_SCALE : 1f);
+                b.Position = offset;
+            });
+        }
+
         private void onLeavingScreen()
         {
+            // NOCTURNE: undo background parallax when leaving.
+            ApplyToBackground(b =>
+            {
+                b.Scale = Vector2.One;
+                b.Position = Vector2.Zero;
+            });
+
             restoreBackground();
 
             Beatmap.ValueChanged -= updateVariousState;

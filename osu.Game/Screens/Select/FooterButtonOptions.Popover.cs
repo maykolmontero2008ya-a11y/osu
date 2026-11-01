@@ -12,6 +12,7 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Input.Events;
 using osu.Framework.Localisation;
 using osu.Game.Beatmaps;
+using osu.Game.Configuration;
 using osu.Game.Graphics;
 using osu.Game.Graphics.Containers;
 using osu.Game.Graphics.Sprites;
@@ -46,7 +47,7 @@ namespace osu.Game.Screens.Select
             }
 
             [BackgroundDependencyLoader]
-            private void load(OsuColour colours)
+            private void load(OsuColour colours, OsuConfigManager config)
             {
                 Content.Padding = new MarginPadding(5);
 
@@ -59,6 +60,10 @@ namespace osu.Game.Screens.Select
 
                 addHeader(CommonStrings.General);
                 addButton(CollectionsStrings.ManageCollections, FontAwesome.Solid.Book, () => SongSelect?.ManageCollections());
+
+                var reducedEffects = config.GetBindable<bool>(OsuSetting.NocturneReducedEffects);
+                addHeader("NOCTURNE", reducedEffects.Value ? "Reduced effects: on" : "Reduced effects: off");
+                addButton(reducedEffects.Value ? "Turn reduced effects off" : "Turn reduced effects on", FontAwesome.Solid.Cog, () => reducedEffects.Value = !reducedEffects.Value);
 
                 Debug.Assert(beatmap.BeatmapSet != null);
                 addHeader(SongSelectStrings.ForAllDifficulties, beatmap.BeatmapSet.ToString());
