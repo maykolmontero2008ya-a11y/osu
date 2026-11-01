@@ -102,7 +102,8 @@ namespace osu.Game.Screens.Select
                     Padding = new MarginPadding
                     {
                         Top = SongSelect.WEDGE_CONTENT_MARGIN + TopPadding,
-                        Left = SongSelect.WEDGE_CONTENT_MARGIN
+                        Left = SongSelect.WEDGE_CONTENT_MARGIN,
+                        Bottom = 14,
                     },
                     Spacing = new Vector2(0f, 4f),
                     Children = new Drawable[]
@@ -171,15 +172,6 @@ namespace osu.Game.Screens.Select
                         new ShearAligningWrapper(new NocturnePreviewBar
                         {
                             Shear = -OsuGame.SHEAR,
-                        }),
-                        new ShearAligningWrapper(new Container
-                        {
-                            Shear = -OsuGame.SHEAR,
-                            RelativeSizeAxes = Axes.X,
-                            AutoSizeAxes = Axes.Y,
-                            Margin = new MarginPadding { Left = -SongSelect.WEDGE_CONTENT_MARGIN },
-                            Padding = new MarginPadding { Right = -SongSelect.WEDGE_CONTENT_MARGIN },
-                            Child = new DifficultyDisplay(),
                         }),
                     },
                 }

@@ -121,6 +121,7 @@ namespace osu.Game.Screens.Select
 
         private BeatmapTitleWedge titleWedge = null!;
         private NocturneDifficultyRow difficultyRow = null!;
+        private BeatmapTitleWedge.DifficultyDisplay difficultyDisplay = null!;
         private BeatmapDetailsArea detailsArea = null!;
         private FillFlowContainer wedgesContainer = null!;
         private Box rightGradientBackground = null!;
@@ -248,7 +249,17 @@ namespace osu.Game.Screens.Select
                                                             {
                                                                 TopPadding = TopPadding,
                                                             }),
-                                                            new ShearAligningWrapper(difficultyRow = new NocturneDifficultyRow(selectDifficulty)),
+                                                            new ShearAligningWrapper(difficultyRow = new NocturneDifficultyRow(selectDifficulty) { AlwaysPresent = true }),
+                                                            // NOCTURNE: the beatmap info strip lives below the difficulty cards.
+                                                            new ShearAligningWrapper(new Container
+                                                            {
+                                                                Shear = -OsuGame.SHEAR,
+                                                                RelativeSizeAxes = Axes.X,
+                                                                AutoSizeAxes = Axes.Y,
+                                                                Margin = new MarginPadding { Left = -WEDGE_CONTENT_MARGIN },
+                                                                Padding = new MarginPadding { Right = -WEDGE_CONTENT_MARGIN },
+                                                                Child = difficultyDisplay = new BeatmapTitleWedge.DifficultyDisplay { AlwaysPresent = true },
+                                                            }),
                                                             new InputBlockingContainer
                                                             {
                                                                 RelativeSizeAxes = Axes.X,
@@ -416,7 +427,7 @@ namespace osu.Game.Screens.Select
         {
             base.Update();
 
-            detailsArea.Height = wedgesContainer.ChildSize.Y - titleWedge.LayoutSize.Y - difficultyRow.Height - 4;
+            detailsArea.Height = wedgesContainer.ChildSize.Y - titleWedge.LayoutSize.Y - difficultyRow.Height - difficultyDisplay.LayoutSize.Y - 4;
 
             float widescreenBonusWidth = Math.Max(0, DrawWidth / DrawHeight - 2f);
 
@@ -868,12 +879,16 @@ namespace osu.Game.Screens.Select
                 titleWedge.Hide();
                 detailsArea.Hide();
                 FilterControl.Hide();
+                difficultyRow.FadeTo(0, 250, Easing.OutQuint);
+                difficultyDisplay.FadeTo(0, 250, Easing.OutQuint);
             }
             else
             {
                 titleWedge.Show();
                 detailsArea.Show();
                 FilterControl.Show();
+                difficultyRow.FadeTo(1, 250, Easing.OutQuint);
+                difficultyDisplay.FadeTo(1, 250, Easing.OutQuint);
             }
         }
 
